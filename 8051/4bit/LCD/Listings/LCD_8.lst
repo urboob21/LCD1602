@@ -1,0 +1,76 @@
+C51 COMPILER V9.60.0.0   LCD_8                                                             02/09/2023 08:46:49 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD_8
+OBJECT MODULE PLACED IN .\Objects\LCD_8.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE LCD_8.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\LCD
+                    -_8.lst) TABS(2) OBJECT(.\Objects\LCD_8.obj)
+
+line level    source
+
+   1          #include "LCD_8.h" 
+   2          
+   3          ///--------new var or extern from main
+   4          
+   5          //description funtion
+   6            void delay_ms(unsigned int t)
+   7            {
+   8   1          unsigned int i,j;
+   9   1          for(i=0;i<t;i++)
+  10   1          for(j=0;j<125;j++);
+  11   1        }
+  12          
+  13          void LCD_SendCommand(unsigned char cmd)
+  14          {
+  15   1        LCD_RW=0;
+  16   1        LCD_RS=0;
+  17   1        LCD_CMD=cmd;
+  18   1        LCD_E=1;
+  19   1        delay_ms(1);   //thoi gian delay xem o datasheet
+  20   1        LCD_E=0; 
+  21   1        delay_ms(3);  
+  22   1      }
+  23          
+  24          void LCD_SendChar(unsigned char char_data)
+  25          {
+  26   1        LCD_RW=0;
+  27   1        LCD_RS=1;
+  28   1        LCD_CMD=char_data;
+  29   1        LCD_E=1;
+  30   1        delay_ms(1);   //thoi gian delay xem o datasheet
+  31   1        LCD_E=0; 
+  32   1        delay_ms(3);
+  33   1      }
+  34          
+  35          void LCD_SendString(char *str)
+  36          {
+  37   1        int i;
+  38   1        for(i=0;str[i]!=0;i++)
+  39   1        {
+  40   2          LCD_SendChar(str[i]);
+  41   2        }
+  42   1      }
+  43          
+  44          void LCD_Init()
+  45          {
+  46   1          LCD_SendCommand(0x38);  //mode 8bit,2 dong
+  47   1          LCD_SendCommand(0x0C);  //bat hien thi, tat con tro
+  48   1          LCD_SendCommand(0x01);  // xoa noi dung hien thi tren lcd
+  49   1            
+  50   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    131    ----
+C51 COMPILER V9.60.0.0   LCD_8                                                             02/09/2023 08:46:49 PAGE 2   
+
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
