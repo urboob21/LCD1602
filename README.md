@@ -7,6 +7,7 @@ data sheet https://www.sparkfun.com/datasheets/LCD/HD44780.pdf<br>
   a. Mode 8bits: <br>
   ![image](https://user-images.githubusercontent.com/118428350/217688963-80611a1d-34d4-48d7-b6b2-96a502eaa453.png)<br>
   b. Mode 4bits: <br> (tốc độ chậm hơn nhưng tốn ít chân hơn)<br>
+  
 3.Giao tiếp: <br>
   a. Mode 8bits: <br>
 **Gửi lệnh ra LCD: <br>
@@ -28,7 +29,7 @@ data sheet https://www.sparkfun.com/datasheets/LCD/HD44780.pdf<br>
   - Bật/tắt con trỏ
   - ...
     ![image](https://user-images.githubusercontent.com/118428350/217689933-b9c004e1-f499-4c7c-8a13-ef5b469a7f87.png)<br>
-
+  
 
 
   
